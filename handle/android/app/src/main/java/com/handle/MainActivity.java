@@ -5,6 +5,10 @@ import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
 
+import com.google.android.gms.fitness.Fitness;
+import com.reactnative.googlefit.GoogleFitPackage;
+
+
 public class MainActivity extends ReactActivity {
 
   /**
@@ -32,4 +36,15 @@ public class MainActivity extends ReactActivity {
         DefaultNewArchitectureEntryPoint.getConcurrentReactEnabled() // concurrentRootEnabled
         );
   }
+
+
+  @Override
+  protected List<ReactPackage> getPackages() {
+    @SuppressWarnings("UnnecessaryLocalVariable")
+    List<ReactPackage> packages = new PackageList(this).getPackages();
+    packages.add(new GoogleFitPackage());
+    return packages;
+  }
 }
+
+
