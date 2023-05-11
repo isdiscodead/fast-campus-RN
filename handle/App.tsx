@@ -1,16 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import { RootNavigation } from './src/navigations/RootNavigation';
+
 import {
-  SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -21,40 +14,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import {
   Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { RootNavigation } from './src/navigations/RootNavigation';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
 
 
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
-  }
-
-  return (
-    <SafeAreaProvider>
-      <StatusBar 
-        barStyle={ isDarkMode ? 'light-content' : 'dark-content' }
-        backgroundColor={ backgroundStyle.backgroundColor}
-      />
-
-      <NavigationContainer>
-        <RootNavigation />
-      </NavigationContainer>
-
-    </SafeAreaProvider>
-  );
-}
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -64,36 +27,18 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider>
+
+        <StatusBar 
+          barStyle={ isDarkMode ? 'light-content' : 'dark-content' }
+          backgroundColor={ backgroundStyle.backgroundColor}
+        />
+
+        <NavigationContainer>
+          <RootNavigation />
+        </NavigationContainer>
+
+    </SafeAreaProvider>
   );
 }
 
