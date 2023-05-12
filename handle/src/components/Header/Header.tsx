@@ -26,10 +26,14 @@ export const Header: React.FC<{
         style={{
           width: width,
           flexDirection: 'row',
-          height: 56,
-          borderBottomColor: 'gray',
+          height: 64,
+          backgroundColor: "#ffffff40",
+          borderBottomColor: '#fff',
           borderBottomWidth: 1,
           alignItems: 'center',
+          padding: 20,
+          borderBottomLeftRadius: 100,
+          borderBottomRightRadius: 100,
         }}>
         <Spacer horizontal={true} space={12} />
         <View
@@ -45,35 +49,6 @@ export const Header: React.FC<{
     </View>
   );
 };
-
-// export class Header extends React.Component{
-//     render(){
-//         return(
-//             <SafeAreaInsetsContext.Consumer>
-//                 {insets=>(
-//                     <View style={{paddingTop:insets.top,}}>
-//                         <View
-//                             style={{
-//                                 width:width,
-//                                 flexDirection:'row',
-//                                 height:56,
-//                                 borderBottomColor:'gray',
-//                                 borderBottomWidth:1,
-//                                 alignItems:'center'
-//                             }}>
-
-//                             <Spacer horizontal={true} space={12}/>
-//                             <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
-//                                 {this.props.children}
-//                             </View>
-//                             <Spacer horizontal={true} space={12}/>
-//                         </View>
-//                     </View>
-//                 )}
-//             </SafeAreaInsetsContext.Consumer>
-//         )
-//     }
-// }
 
 Header.Title = HeaderTitle;
 Header.Icon = HeaderIcon;
