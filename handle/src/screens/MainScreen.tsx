@@ -110,10 +110,10 @@ export const MainScreen:React.FC = () => {
               생체 시계 / 건강 데이터 기반의 추천 활동
             </Typography>
             <Typography fontSize={14}>
-              추천 활동 1에 대한 설명 ... 
+              ✓ { "추천 활동 1에 대한 설명 ... "}
             </Typography>
             <Typography fontSize={14}>
-              추천 활동 2에 대한 설명 ... 
+            ✓ { "추천 활동 1에 대한 설명 ... "}
             </Typography>
           </View>
 
