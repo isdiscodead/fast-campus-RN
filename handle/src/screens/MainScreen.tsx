@@ -4,6 +4,7 @@ import { View,  ImageBackground, Text, ScrollView, } from 'react-native'
 import GoogleFit, { Scopes } from 'react-native-google-fit';
 import { MainCard } from '../components/Main/MainCard';
 import { Typography } from '../components/Typography';
+import { NavigationBar } from '../components/Navigation/NavigationBar';
 
 
 export const MainScreen:React.FC = () => {
@@ -125,6 +126,10 @@ export const MainScreen:React.FC = () => {
             <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
             <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
           </ScrollView>
+
+          <NavigationBar>
+            
+          </NavigationBar>
         </ImageBackground>
     </View>
   )
