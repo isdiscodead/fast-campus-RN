@@ -5,6 +5,7 @@ import GoogleFit, { Scopes } from 'react-native-google-fit';
 import { MainCard } from '../components/Main/MainCard';
 import { Typography } from '../components/Typography';
 import { NavigationBar } from '../components/Navigation/NavigationBar';
+import { TabIcon } from '../components/Navigation/TabIcon';
 
 
 export const MainScreen:React.FC = () => {
@@ -71,14 +72,16 @@ export const MainScreen:React.FC = () => {
       console.log("authorized: "+authorized);
       if (authorized) {
         // if already authorized, fetch data
+        fetchStepsData(opt);
+
       } else {
         // Authentication if already not authorized for a particular device
         GoogleFit.authorize(options)
           .then(authResult => {
             if (authResult.success) {
+              // if successfully authorized, fetch data
               console.log('AUTH_SUCCESS');
 
-              // if successfully authorized, fetch data
             } else {
               console.log('AUTH_DENIED ' + authResult.message);
             }
@@ -88,8 +91,7 @@ export const MainScreen:React.FC = () => {
           });
       }
     });
-
-    fetchStepsData(opt);
+    
   }, []);
   
   return (
@@ -105,17 +107,17 @@ export const MainScreen:React.FC = () => {
 
           <View style={{
             padding: 30,
-            marginBottom: 40,
+            marginBottom: 20,
           }}>
             <Typography fontSize={18}>
               생체 시계 / 건강 데이터 기반의 추천 활동
             </Typography>
-            <Typography fontSize={14}>
+            <Text>
               ✓ { "추천 활동 1에 대한 설명 ... "}
-            </Typography>
-            <Typography fontSize={14}>
+            </Text>
+            <Text>
             ✓ { "추천 활동 1에 대한 설명 ... "}
-            </Typography>
+            </Text>
           </View>
 
           <ScrollView contentContainerStyle={{ display: "flex", flexWrap:"wrap", flexDirection:"row", justifyContent: "space-around" }}>
@@ -125,10 +127,14 @@ export const MainScreen:React.FC = () => {
             <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
             <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
             <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
+            <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
+            <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
           </ScrollView>
 
           <NavigationBar>
-            
+            <TabIcon visibleBadge={false} iconName='statistics' iconColor='white' />
+            <TabIcon visibleBadge={false} iconName='home' iconColor='white' />
+            <TabIcon visibleBadge={false} iconName='setting' iconColor='white' />
           </NavigationBar>
         </ImageBackground>
     </View>
