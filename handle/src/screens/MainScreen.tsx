@@ -132,9 +132,9 @@ export const MainScreen:React.FC = () => {
           </ScrollView>
 
           <NavigationBar>
-            <TabIcon visibleBadge={false} iconName='statistics' iconColor='white' />
+            <TabIcon visibleBadge={false} iconName='stats-chart-outline' iconColor='white' />
             <TabIcon visibleBadge={false} iconName='home' iconColor='white' />
-            <TabIcon visibleBadge={false} iconName='setting' iconColor='white' />
+            <TabIcon visibleBadge={false} iconName='settings-outline' iconColor='white' />
           </NavigationBar>
         </ImageBackground>
     </View>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import { Typography } from '../Typography';
 
 export const MainCard: React.FC<{
     content: string;
@@ -18,8 +19,10 @@ export const MainCard: React.FC<{
         margin: 10,
       }}
     >
-        <Text>{props.title}</Text>
-        <Text>{props.content}</Text>
+      <View>
+        <Typography fontSize={14}>{props.title}</Typography>
+        <Typography fontSize={18}>{props.content}</Typography>
+      </View>
     </View>
   );
 };
