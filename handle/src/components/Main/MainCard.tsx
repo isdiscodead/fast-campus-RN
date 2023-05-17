@@ -19,7 +19,14 @@ export const MainCard: React.FC<{
         margin: 10,
       }}
     >
-      <View>
+      <View 
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 20,
+        }}
+      >
         <Typography fontSize={14}>{props.title}</Typography>
         <Typography fontSize={18}>{props.content}</Typography>
       </View>

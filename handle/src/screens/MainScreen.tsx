@@ -15,7 +15,6 @@ export const MainScreen:React.FC = () => {
   var [calories, setCalories] = useState(0);
   var [hydration, setHydration] = useState(0);
   var [sleep, setSleep] = useState(0);
-  var [weight, setWeight] = useState(0);
   var [bloodPressure, setBloodPressure] = useState({});
   var [loading, setLoading] = useState(true);
 
@@ -65,11 +64,13 @@ export const MainScreen:React.FC = () => {
     }
   };
 
+
   useEffect(() => {
 
     GoogleFit.checkIsAuthorized().then(() => {
       var authorized = GoogleFit.isAuthorized;
       console.log("authorized: "+authorized);
+
       if (authorized) {
         // if already authorized, fetch data
         fetchStepsData(opt);
@@ -81,6 +82,7 @@ export const MainScreen:React.FC = () => {
             if (authResult.success) {
               // if successfully authorized, fetch data
               console.log('AUTH_SUCCESS');
+              fetchStepsData(opt);
 
             } else {
               console.log('AUTH_DENIED ' + authResult.message);
@@ -109,9 +111,15 @@ export const MainScreen:React.FC = () => {
             padding: 30,
             marginBottom: 20,
           }}>
-            <Typography fontSize={18}>
-              생체 시계 / 건강 데이터 기반의 추천 활동
-            </Typography>
+
+            <View style={{
+              marginBottom: 5,
+            }}>
+              <Typography fontSize={18}>
+                생체 시계 / 건강 데이터 기반의 추천 활동
+              </Typography>
+            </View>
+            
             <Text>
               ✓ { "추천 활동 1에 대한 설명 ... "}
             </Text>
@@ -121,9 +129,9 @@ export const MainScreen:React.FC = () => {
           </View>
 
           <ScrollView contentContainerStyle={{ display: "flex", flexWrap:"wrap", flexDirection:"row", justifyContent: "space-around" }}>
-            <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
-            <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
-            <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
+            <MainCard title={"👟 걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
+            <MainCard title={"💤 수면 시간"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
+            <MainCard title={"♥️ 평균 심박수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
             <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
             <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
             <MainCard title={"걸음 수"} content={ dailySteps ? dailySteps+"" : "no data" }></MainCard>
