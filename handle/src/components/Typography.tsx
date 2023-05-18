@@ -19,6 +19,7 @@ export const Typography: React.FC<{
   color?: string;
   fontSize?: number;
   numberOfLines?: number;
+  textAlign?: string
   children: React.ReactElement | string | string[] | React.ReactElement[];
 }> = props => {
   return (

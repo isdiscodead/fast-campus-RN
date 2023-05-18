@@ -15,7 +15,7 @@ export const MainCard: React.FC<{
         borderBottomWidth: 1,
         borderRadius: 10,
         width: 150,
-        height: 150,
+        height: 100,
         margin: 10,
       }}
     >
