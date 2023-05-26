@@ -14,3 +14,11 @@ c = "Mark";
 let d: number; // number로 지정 
 // d = "Mark";
 d = 39;
+
+
+function hello(b: number) {
+    console.log(b);
+}
+
+// hello('Mark');
+hello(3); // 숫자만 사용 가능
