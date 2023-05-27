@@ -21,4 +21,4 @@ function hello(b: number) {
 }
 
 // hello('Mark');
-hello(3); // 숫자만 사용 가능
+hello(3); // 숫자만 인자로 사용 가능
