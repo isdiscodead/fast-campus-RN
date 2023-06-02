@@ -4,3 +4,5 @@
 // boolean, number, string, symbol, null, undefined 
 let name2 = "mark";
 name2.toString();
+
+// boolean
