@@ -16,10 +16,24 @@ let isOk: Boolean = true;
 
 
 // number 
-let decimal: number = 6;
+let age: number = 23;
 let hex: number = 0xf00d;
 let binary: number = 0b1010;
 let octal: number = 0o744;
 
 let notANumber: number = NaN; // NaN은 숫자의 한 형태 ...? 
 let undersocreNum: number = 1_000_000; // 가독성을 위한 표기 방식
+
+
+// string
+// 텍스트 형식을 참조하기 위해 따옴표 사용한 형식
+let myName: string = "Jiwon";
+myName = 'ggongchi';
+
+// Template String
+// 행에 걸쳐있거나 표현식을 넣을 수 있는 문자열 -> 백틱 ` 사용 
+let sentence: string = `Hello, my name is ${myName}.
+
+I'll be ${age+1} years old next month.`;
+
+console.log(sentence);
