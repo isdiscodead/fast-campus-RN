@@ -30,6 +30,7 @@ let undersocreNum: number = 1_000_000; // 가독성을 위한 표기 방식
 let myName: string = "Jiwon";
 myName = 'ggongchi';
 
+
 // Template String
 // 행에 걸쳐있거나 표현식을 넣을 수 있는 문자열 -> 백틱 ` 사용 
 let sentence: string = `Hello, my name is ${myName}.
@@ -37,3 +38,16 @@ let sentence: string = `Hello, my name is ${myName}.
 I'll be ${age+1} years old next month.`;
 
 console.log(sentence);
+
+
+// Symbol 
+// new Symbol을 사용할 수 없고, Symbol()을 사용해 symbol 타입을 생성
+// Symbol 사용을 위해서는 lib에 ES2015와 DOM 추가 필요
+// 프리미티브 타입의 값을 넣어, 고유하고 수정 불가능한 값을 만들어서 접근 제어용으로 사용함
+console.log(Symbol('foo') === Symbol('foo')); // false
+const sym = Symbol(); // 값을 넣지 않아도 생성됨 
+const obj = {
+    [sym]: "value",
+};
+obj[sym];
+
