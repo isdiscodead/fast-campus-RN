@@ -51,3 +51,13 @@ const obj = {
 };
 obj[sym];
 
+
+// null & undefined
+// null은 null만, undefined는 undefined만 값으로 가짐
+// void와 마찬가지로 그 자체로는 그다지 유용하지 않음
+// 둘다 모든 타입의 subtype으로 사용될 수 있음 
+// 컴파일 옵션에서 --strictNullChecks를 사용하면 하위 타입으로 사용되지 않음
+// 할당 가능하도록 하려면 union type 이용 ! 
+let u: undefined = undefined;
+let n: null = null;
+let union: string | null | undefined = 'str';
