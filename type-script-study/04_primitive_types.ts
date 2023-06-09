@@ -58,6 +58,13 @@ obj[sym];
 // 둘다 모든 타입의 subtype으로 사용될 수 있음 
 // 컴파일 옵션에서 --strictNullChecks를 사용하면 하위 타입으로 사용되지 않음
 // 할당 가능하도록 하려면 union type 이용 ! 
-let u: undefined = undefined;
-let n: null = null;
+let u: undefined = undefined; // 아예 준비되지 않은 값
+let n: null = null; // 준비가 덜 된 값
+let v: void = undefined;
+
+console.log(typeof n); // null이 아닌 object 
+console.log(typeof u); // undefined
+
+// let myName: string = null;
 let union: string | null | undefined = 'str';
+
