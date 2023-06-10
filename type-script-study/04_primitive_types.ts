@@ -67,4 +67,3 @@ console.log(typeof u); // undefined
 
 // let myName: string = null;
 let union: string | null | undefined = 'str';
-
