@@ -1,26 +1,34 @@
 import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
+const Header = (props) => {
+    return <Text>{ props.title }</Text>;
+};
+
+const MyProfile = () => {
+    return <Text>MyProfile</Text>;
+};
+
+
+const Division = () => {
+    return <Text>Division</Text>;
+};
+
+const FriendSection = () => {
+    return <Text>FriendSection</Text>;
+};
+
+const FriendList = () => {
+    return <Text>FriendList</Text>;
+};
+
 export default function App() {
   return (
-    <View style={ styles.container }>
-      <Text style={ styles.text }>
-        Open up App.js to start working on your app!
-      </Text>
-
-      {/* <Image source={require("./puppy.jpeg")} style={styles.local_image} /> */}
-      <Image source={{ uri: "https://cdn.imweb.me/upload/S20221028cf7056c180500/681644a787b32.jpg"}} style={styles.local_image} />
-
-      <TextInput placeholder='이름을 입력해주세요' />
-
-      <ScrollView>
-        <Button title="Click Me!" onPress={() => {
-          console.log("clicked");
-        }} />
-
-        <Switch value={true} />
-        <Switch value={false} />
-      </ScrollView>
-    
+    <View style={ styles.container }>  
+        <Header title="친구" />  
+        <MyProfile />  
+        <Division />  
+        <FriendSection />  
+        <FriendList />  
     </View>
   ); 
 }
