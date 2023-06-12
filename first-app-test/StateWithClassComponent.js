@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, View, Text, Button } from "react";
 
 export default class StateWithClassComponent extends Component {
   constructor(props) {
