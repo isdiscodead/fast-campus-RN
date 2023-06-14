@@ -72,6 +72,7 @@ class Profile extends React.Component {
 export default function App() {
   return (
     <View style={ styles.container }>  
+        {/* 
         <Header title="친구" />  
         <MyProfile />  
         <Division />  
@@ -80,6 +81,7 @@ export default function App() {
 
         <StateWithClassComponent />
         <StateWithFunctionalComponent />
+        */}
     </View>
   ); 
 }
