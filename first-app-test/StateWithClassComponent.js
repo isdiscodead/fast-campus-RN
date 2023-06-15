@@ -11,6 +11,11 @@ export default class StateWithClassComponent extends Component {
   render() {
     return ( 
       <View>
+        <Text>You Clicked {this.state.count} times</Text>
+        <Button 
+          title="Click Me"
+          onPress={()=>{ this.setState({ count: this.state.count + 1 })}}
+        />
       </View>
     );
   }

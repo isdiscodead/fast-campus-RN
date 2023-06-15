@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import StateWithClassComponent from './StateWithClassComponent';
+import StateWithFunctionalComponent from './StateWithFunctionalComponent';
 
 const Header = (props) => {
     return <Text>{ props.title }</Text>;
@@ -75,6 +77,9 @@ export default function App() {
         <Division />  
         <FriendSection />  
         <FriendList />  
+
+        <StateWithClassComponent />
+        <StateWithFunctionalComponent />
     </View>
   ); 
 }
