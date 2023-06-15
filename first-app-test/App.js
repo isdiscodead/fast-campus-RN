@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import StateWithClassComponent from './StateWithClassComponent';
 import StateWithFunctionalComponent from './StateWithFunctionalComponent';
+import UseEffectWithClassComponent from './UseEffectWithClassComponent';
+import UseEffectWithFunctionalComponent from './UseEffectWithFunctionalComponent';
 
 const Header = (props) => {
     return <Text>{ props.title }</Text>;
@@ -70,20 +72,27 @@ class Profile extends React.Component {
 }
 
 export default function App() {
-  return (
-    <View style={ styles.container }>  
-        {/* 
-        <Header title="친구" />  
-        <MyProfile />  
-        <Division />  
-        <FriendSection />  
-        <FriendList />  
 
-        <StateWithClassComponent />
-        <StateWithFunctionalComponent />
-        */}
-    </View>
-  ); 
+    const [isTrue, setIsTrue] = useState(true);
+    
+    return (
+        <View style={ styles.container }>  
+            {/* 
+            <Header title="친구" />  
+            <MyProfile />  
+            <Division />  
+            <FriendSection />  
+            <FriendList />  
+
+            <StateWithClassComponent />
+            <StateWithFunctionalComponent />
+            */}
+            { isTrue ? <UseEffectWithClassComponent /> : null }
+            { isTrue && <UseEffectWithFunctionalComponent /> }
+
+            <Button title="toggle" onPress={ ()=>setIsTrue(!isTrue) } />
+        </View>
+    ); 
 }
 
 const styles = StyleSheet.create({
