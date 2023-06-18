@@ -4,6 +4,7 @@ import StateWithClassComponent from './StateWithClassComponent';
 import StateWithFunctionalComponent from './StateWithFunctionalComponent';
 import UseEffectWithClassComponent from './UseEffectWithClassComponent';
 import UseEffectWithFunctionalComponent from './UseEffectWithFunctionalComponent';
+import CustomHook from './CustomHook';
 
 const Header = (props) => {
     return <Text>{ props.title }</Text>;
@@ -91,6 +92,8 @@ export default function App() {
             { isTrue && <UseEffectWithFunctionalComponent /> }
 
             <Button title="toggle" onPress={ ()=>setIsTrue(!isTrue) } />
+
+            <CustomHook />
         </View>
     ); 
 }
