@@ -68,3 +68,42 @@ if ( maybe === true ) {
 if ( typeof maybe === 'string' ) {
     const aString: string = maybe;
 }
+
+
+// never
+// 일반적으로 return에서 사용됨 -> 어떠한 형태도 return되지 않고 종료되지도 않음 !! 
+// never 타입은 모든 타입의 subtype이지만 never에는 무엇도 할당 불가능
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// never를 return하는 경우에도 never로 추론됨
+function fail() {
+    return error('failed');
+}
+
+// 무한루프 생성 가능
+function infiniteLoop():never {
+    while ( true ) {
+
+    }
+}
+
+let a23: string = 'hello';
+if ( typeof a23 !== 'string') {
+    // string에서 string을 빼면 아무것도 할당할 수 없는 상태
+    a23; // 아무 작업 불가능
+}
+
+declare const a24: string | number;
+if ( typeof a24 !== 'string' ) {
+    a24; // number로 타입이 특정되도록 할 수 있음 
+}
+
+//  조건부 타입 -> 잘못된 타입을 넣는 실수를 막는 데 사용됨 
+// T가 string이면 { [index: stirng]: any }를 만들어서 보냄, 아니면 never
+type Indexable<T> = T extends string ? T & { [index: string]: any } : never;
+type ObjectIndexable = Indexable<{}>;
+
+
+// 
