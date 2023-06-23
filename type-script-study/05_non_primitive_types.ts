@@ -106,4 +106,13 @@ type Indexable<T> = T extends string ? T & { [index: string]: any } : never;
 type ObjectIndexable = Indexable<{}>;
 
 
-// 
+// void
+// 값은 없고 type만 있고, return type으로 주로 사용됨 
+// 보통 undefined를 더 많이 사용함
+function returnVoid(message: string) { // : void를 명시할 경우 무엇도 할 수 없음을 의미 
+    console.log(message);
+    return; // return 값이 없어도 ok 
+    // return undefined; // undefined로 반환은 가능 
+}
+
+const r = returnVoid("리턴이 없음"); // r = void type이므로 사용 및 할당 불가능
