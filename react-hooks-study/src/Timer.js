@@ -8,6 +8,7 @@ function Timer() {
             console.log("타이머 돌아가는 중 ... ");
         }, 1000); // 1초에 한 번씩 실행됨
 
+        // unmount시에 타이머 정리 
         return () => {
             clearInterval(timer);
             console.log("타이머가 종료되었습니다.");
