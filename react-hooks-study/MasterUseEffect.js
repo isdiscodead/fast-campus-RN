@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import Timer from './src/timer';
+import Timer from "./src/components/Timer"
 
 /* 
 컴포넌트 Mount, Update, Unmount시에 실행할 코드 처리를 위함
