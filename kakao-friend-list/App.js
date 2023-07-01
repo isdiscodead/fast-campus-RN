@@ -7,7 +7,7 @@ const statusBarHeight = getStatusBarHeight(true); // true는 뭐지 ?
 const bottomSpace = getBottomSpace();
 
 // test
-console.log(`${Platform.OS}: ${statusBarHeight}, ${bottomSpace}`);
+// console.log(`${Platform.OS}: ${statusBarHeight}, ${bottomSpace}`);
 
 export default function App() {
   return (
