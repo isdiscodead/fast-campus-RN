@@ -4,10 +4,10 @@ import { View, Text, StyleSheet } from 'react-native'
 //icon
 import { Ionicons } from '@expo/vector-icons';
 
-const IconButton = () => {
+const IconButton = (props) => {
   return (
-    <View>
-      <Ionicons name="ios-settings-outline" size={24} color="black" />
+    <View style={{ paddingHorizontal: 6 }}>
+      <Ionicons name={props.name} size={24} color="black" />
     </View>
   );
 }
@@ -18,10 +18,10 @@ export default function Header() {
       <Text style={{ fontSize: 22, fontWeight: 'bold', }}>친구</Text>
 
       <View style={{ flexDirection: "row" }}>
-        <IconButton />
-        <IconButton />
-        <IconButton />
-        <IconButton />
+        <IconButton name="search-outline" />
+        <IconButton name="person-add-outline" />
+        <IconButton name="md-musical-notes-outline" />
+        <IconButton name="ios-settings-outline" />
       </View>
     </View>
   )
