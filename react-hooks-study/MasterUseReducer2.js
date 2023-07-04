@@ -17,7 +17,21 @@ const reducer = (state, action) => {
             };
 
         case 'delete-student':
-            return;
+            return {
+                count: state.count - 1,
+                students: state.students.filter( (student) => student.id !== action.payload.id ),
+            };
+
+        case 'mark-student':
+            return {
+                count: state.count,
+                students: state.students.map( student => {
+                    if ( student.id === action.payload.id ) {
+                        return { ...student, isHere: !student.isHere };
+                    }
+                    return student; // 대상이 아닐 경우 그대로 
+                })
+            }
         default:
             return state;
     } 
@@ -55,6 +69,7 @@ export default function MasterUseReducer2() {
                     key={student.id} 
                     dispatch={dispatch}
                     id={student.id}
+                    isHere={student.isHere}
                 />);
             }) }
         </div>
