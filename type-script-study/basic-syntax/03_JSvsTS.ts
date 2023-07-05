@@ -11,8 +11,8 @@ const result = add(32, 39);
 */
 
 // TypeScript
-function add( n1: number, n2:number ) {
+function addTwo( n1: number, n2:number ) {
     return n1 + n2;
 }
 
-const result = add(2, 3);
+const result = addTwo(2, 3);
