@@ -11,3 +11,16 @@ String.prototype.charAt = function ( pos ) {
     return originalCharAt.call(this, pos);
 }
 console.log( "primitive".charAt(3) );
+
+
+function getStringLen(foo: String) {
+    return foo.length;
+}
+
+getStringLen('hello'); // OK  string -> String
+getStringLen(new String('hello')); // OK
+
+function isGreeting(phrase: String) { 
+    // String -> string (X)
+    // return ['hello', 'good day'].includes(phrase); 
+}
