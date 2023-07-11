@@ -2,16 +2,50 @@ import React from 'react'
 import { View, Image, Text } from 'react-native'
 import Margin from './Margin'
 
-function Profile(props) {
+import styled from 'styled-components/native';
+
+const Container = styled.View`
+  flex-direction: row;
+`
+
+const ProfileImage = styled.Image`
+  width: ${(props) => props.size}px;
+  height: ${(props) => props.size}px;
+  border-radius: ${(props) => props.size * 0.4}px;
+`
+
+const TextContainer = styled.View`
+  justify-content: center;
+  margin-left: 10px;
+`
+
+const NameText = styled.Text`
+  font-weight: ${(props) => props.isMe ? "bold" : "normal"};
+  font-size: ${(props) => props.isMe ? 16 : 16}px;
+`
+
+const IntroductionText = styled.Text`
+  font-weight: ${(props) => props.isMe ? 12 : 11 }px;
+  color: gray;
+`
+
+function Profile({ uri, name, introduction, isMe }) {
+
+  const size = isMe ? 50 : 40;
+
   return (
-    <View style={{ flexDirection: "row" }}>
-        <Image source={{ uri: props.uri }} style={{ width: 50, height: 50, borderRadius: 20 }}/>
-        <View style={{ justifyContent: "center", marginLeft: 10 }}>
-            <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{props.name}</Text>
-            <Margin height={ 6 } />
-            <Text style={{ fontSize: 12, color: "gray" }}>{props.introduction}</Text>
-        </View>
-    </View>
+    <Container>
+        <ProfileImage source={{ uri }} />
+        <TextContainer>
+            <NameText>{ name }</NameText>
+            { !!introduction && ( // !!를 통해 boolean 값으로 변경해야 함 
+              <View>
+                <Margin height={  isMe ? 6 : 2 } />
+                <IntroductionText>{ introduction }</IntroductionText>
+              </View>
+            )}
+        </TextContainer>
+    </Container>
   )
 }
 
