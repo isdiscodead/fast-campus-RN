@@ -11,6 +11,7 @@ import Division from './src/Division';
 import FriendSection from './src/FriendSection';
 import { FriendList } from './src/FriendList';
 import { useState } from 'react';
+import { TabBar } from './src/TabBar';
 
 const statusBarHeight = getStatusBarHeight(true); // true는 뭐지 ?
 const bottomSpace = getBottomSpace();
@@ -19,7 +20,8 @@ const bottomSpace = getBottomSpace();
 // console.log(`${Platform.OS}: ${statusBarHeight}, ${bottomSpace}`);
 
 export default function App() {
-  const [isOpened, setIsOpened] = useState();
+  const [isOpened, setIsOpened] = useState(true);
+  const [seletedTabIdx, setSeletedTabIdx] = useState(0);
 
   const onPressArrow = () => {
     // console.log("clicked arrow");
@@ -43,13 +45,19 @@ export default function App() {
         <Division />
         <Margin height={12} />
 
-        <FriendSection friendProfileLength={friendProfiles.length} onPress={onPressArrow} isOpened={isOpened}/>
+        <FriendSection 
+          friendProfileLength={ friendProfiles.length } 
+          onPress={ onPressArrow } 
+          isOpened={ isOpened }
+        />
 
         <FriendList 
-          data={friendProfiles}
-          isOpened={isOpened}
+          data={ friendProfiles }
+          isOpened={ isOpened }
         />
       </SafeAreaView>
+
+      <TabBar seletedTabIdx={seletedTabIdx} setSeletedTabIdx={setSeletedTabIdx}/>
     </SafeAreaProvider>
   );
 }

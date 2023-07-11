@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Image, Text } from 'react-native'
 import Margin from './Margin'
 
 function MyProfile(props) {
