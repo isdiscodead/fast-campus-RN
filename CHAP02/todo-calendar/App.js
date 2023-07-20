@@ -1,14 +1,22 @@
-import dayjs from 'dayjs';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { getCalendarColumns, getDayColor, getDayText } from './src/util';
+// react
 import { useEffect, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { SafeAreaView } from 'react-native';
+
+// lib
+import dayjs from 'dayjs';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+
+// hooks
+import { getCalendarColumns, getDayColor, getDayText } from './src/util';
 import { useCalendar } from './src/hook/use-calendar';
+import { useTodoList } from './src/hook/use-todo-list';
+
+
+const statusBarHeight = getStatusBarHeight(true);
 
 const columnSize = 35;
 
@@ -55,6 +63,9 @@ export default function App() {
   const onPressLeftArrow = subtract1Month;
   const onPressRightArrow = add1Month;
 
+
+  const {} = useTodoList(selectedDate);
+
   const ListHeaderComponent = () => {
 
     const currentDateText = dayjs(now).format("YYYY.MM.DD.");
@@ -91,6 +102,7 @@ export default function App() {
     console.log("date clicked");
   }, [selectedDate])
   
+
   const renderItem = ({ item: date }) => {
     const dateText = dayjs(date).get('date');
     const day =dayjs(date).get('day');
@@ -115,14 +127,30 @@ export default function App() {
 
 
   return (
-    <SafeAreaView>
+    <View>
+      <Image
+        source={{
+          uri: 'https://img.freepik.com/free-photo/white-crumpled-paper-texture-background_1373-162.jpg'
+        }}
+        style={{
+          width: "100%",
+          height: "100%",
+          position: 'absolute',
+        }}
+      />
+
       <FlatList 
-      style={ styles.container }
-      data={ columns }
-      keyExtractor={(_, idx) => `column - ${idx}`}
-      numColumns={ 7 }
-      renderItem={ renderItem }  
-      ListHeaderComponent={ ListHeaderComponent } 
+        style={ styles.container }
+        contentContainerStyle={{ paddingTop: statusBarHeight }}
+        data={ columns }
+        keyExtractor={(_, idx) => `column - ${idx}`}
+        numColumns={ 7 }
+        renderItem={ renderItem }  
+        ListHeaderComponent={ ListHeaderComponent } 
+      />
+
+      <FlatList 
+        data={ todoList }
       />
       
       <DateTimePickerModal 
@@ -131,7 +159,7 @@ export default function App() {
         onConfirm={ handleConfirm }
         onCancel={ hideDatePicker }
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
