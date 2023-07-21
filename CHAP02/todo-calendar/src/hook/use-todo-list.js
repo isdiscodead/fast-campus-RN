@@ -51,6 +51,8 @@ export const useTodoList = (selectedDate) => {
         setTodoList(newTodoList);
     }
 
+    const resetInput = () => setInput('');
+
     return {
         todoList, 
         addTodo,
@@ -58,5 +60,6 @@ export const useTodoList = (selectedDate) => {
         toggleTodo,
         input,
         setInput,
+        resetInput,
     }
 }

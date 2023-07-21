@@ -13,7 +13,7 @@ export const fillEmptyColumns = (columns, start, end) => {
         filledColumns.unshift(date); // 맨 앞에 추가 
     }
 
-    // 2. 마지막 날 이후 공백 채우기
+    // 2. 마지막 날 이후 공백 채우기 
     const endDay = dayjs(end).get("day");
     for ( let i=0 ; i <= 6-endDay ; i++ ) {
         const date = dayjs(end).add(i, "day"); // i일 후 
