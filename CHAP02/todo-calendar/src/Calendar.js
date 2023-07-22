@@ -1,38 +1,53 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
-import { SimpleLineIcons } from '@expo/vector-icons';
+import { SimpleLineIcons } from "@expo/vector-icons";
 import dayjs from "dayjs";
 import { styles } from "../App";
 
 import { getDayColor, getDayText } from "./util";
 
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
 const statusBarHeight = getStatusBarHeight(true);
 const columnSize = 35;
 
-export const Column = ({ text, color, opacity, disabled, isSelected, onPress }) => {
+export const Column = ({
+  text,
+  color,
+  opacity,
+  disabled,
+  isSelected,
+  onPress,
+  hasTodo,
+}) => {
   return (
     <TouchableOpacity 
-      disabled={disabled} 
+      disabled={disabled}
       onPress={onPress}
-      style={{ width: columnSize, height: columnSize, 
-      borderRadius: columnSize / 2,
-      backgroundColor: isSelected ? "#00000020" : "transparent",
-      justifyContent: "center", alignItems: "center" }}
-    > 
-      <Text style={{ color, opacity }} >
-        { text }
-      </Text>
+      style={{
+        width: columnSize,
+        height: columnSize,
+        borderRadius: columnSize / 2,
+        backgroundColor: isSelected ? "#00000020" : "transparent",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text style={{ color, opacity, fontWeight: hasTodo ? 'bold' : 'normal' }}>{text}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const ArrowButton = ({ iconName, onPress }) => {
   <TouchableOpacity style={{ paddingVertical: 15, paddingHorizontal: 20 }}>
-    <SimpleLineIcons iconName={iconName} size={18} color="#404040" onPress={onPress}/>
-  </TouchableOpacity>
-}
+    <SimpleLineIcons
+      iconName={iconName}
+      size={18}
+      color="#404040"
+      onPress={onPress}
+    />
+  </TouchableOpacity>;
+};
 
 export default ({
   selectedDate,
@@ -41,6 +56,7 @@ export default ({
   onPressHeaderDate,
   onPressDate,
   columns,
+  todoList,
 }) => {
   const ListHeaderComponent = ({ now }) => {
     const currentDateText = dayjs(now).format("YYYY.MM.DD.");
@@ -91,6 +107,7 @@ export default ({
     const isCurrentMonth = dayjs(date).isSame(selectedDate, "month");
 
     const isSelected = dayjs(date).isSame(selectedDate);
+    const hasTodo = todoList.find(todo => dayjs(todo.date).isSame(dayjs(date), 'date'));
 
     return (
       <Column
@@ -99,6 +116,7 @@ export default ({
         opacity={isCurrentMonth ? 1 : 0.4}
         onPress={onPressDate}
         isSelected={isSelected}
+        hasTodo={hasTodo}
       />
     );
   };

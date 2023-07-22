@@ -35,6 +35,7 @@ export const useCalendar = (now) => {
     
 
     return {
+        todoList,
         selectedDate, 
         setSelectedDate,
         isDatePickerVisible,

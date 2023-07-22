@@ -28,6 +28,7 @@ export default function App() {
   
   const {
     todoList,
+    filteredTodoList,
     input,
     setInput,
     removeTodo,
@@ -51,6 +52,7 @@ export default function App() {
         onPressHeaderDate={onPressHeaderDate}
         onPressRightArrow={onPressRightArrow}
         onPressDate={onPressDate}
+        todoList={todoList}
       />
       <Margin height={15} />
 
@@ -158,7 +160,7 @@ export default function App() {
         <View>
           <FlatList
             ref={flatListRef}
-            data={todoList}
+            data={filteredTodoList}
             style={{ flex: 1 }} // 스크롤 오류 방지 
             contentContainerStyle={{ paddingTop: statusBarHeight + 30 }}
             ListHeaderComponent={ListHeaderComponent}
