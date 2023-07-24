@@ -1,7 +1,16 @@
+import { useState } from "react";
 import { Alert } from "react-native";
 
+const defaultAlbum = {
+    id: 1,
+    title: '기본',
+}
+
 export const useGallery = () => {
-    const [images, setImages] = useState(null);
+    const [images, setImages] = useState([]);
+    const [albums, setAlbums] = useState([defaultAlbum]);
+    const [selectedAlbum, setSelectedAlbum] = useState(defaultAlbum);
+    
     const pickImages = async () => {
       // No permissions request is necessary for launching the image library
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -53,5 +62,6 @@ export const useGallery = () => {
         imagesWithAddButton,
         pickImages,
         deleteImage,
+        selectedAlbum,
     }
 }

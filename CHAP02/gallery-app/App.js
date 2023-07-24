@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, Image, FlatList, SafeAreaView, Platform, Dimensions, TouchableOpacity, Alert } from 'react-native';
 import { useGallery } from './src/use-gallery';
+import MyDropDownPicker from './src/MyDropDownPicker';
 
 const width = Dimensions.get('screen').width;
 const columnSize = width / 3.333333 - 10;
 
 export default function App() {
-  const { images, imagesWithAddButton, pickImages, deleteImage } = useGallery();
+  const { images, imagesWithAddButton, pickImages, deleteImage, 
+    selectedAlbum } = useGallery();
 
   const onPressOpenGallery = () => {
     pickImages();
@@ -42,7 +44,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Button title='갤러리 열기' onPress={onPressOpenGallery} />
+      <MyDropDownPicker selectedAlbumTitle={selectedAlbum.title} onPressAddAlbum={onPressAddAlbum} />
       <FlatList 
         data={imagesWithAddButton}
         renderItem={renderItem}
