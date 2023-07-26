@@ -13,9 +13,12 @@ export default({ selectedAlbumTitle, onPressAddAlbum }) => {
 
             <View 
                 onPress={onPressAddAlbum}
-                style={{ position: "absolute", right: 0, height: headerHeight, justifyContent: 'center', alignItems: 'center' }}
+                style={{ position: "absolute", right: 0, height: headerHeight, 
+                    justifyContent: 'center', alignItems: 'center',
+                    paddingHorizontal: 10,
+                }}
             >
-                <Text>앨범 추가</Text>
+                <Text style={{ fontSize: 12 }}>앨범 추가</Text>
             </View>
         </View>
     )

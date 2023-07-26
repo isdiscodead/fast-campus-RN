@@ -10,6 +10,7 @@ export const useGallery = () => {
     const [images, setImages] = useState([]);
     const [albums, setAlbums] = useState([defaultAlbum]);
     const [selectedAlbum, setSelectedAlbum] = useState(defaultAlbum);
+    const [modalVisible, setModalVisible] = useState(false);
     
     const pickImages = async () => {
       // No permissions request is necessary for launching the image library
@@ -48,6 +49,9 @@ export const useGallery = () => {
         ])
     }
 
+    const openModal = () => setModalVisible(true);
+    const closeModal = () => setModalVisible(false);
+
     const imagesWithAddButton = [
         ...images,
         {
@@ -63,5 +67,8 @@ export const useGallery = () => {
         pickImages,
         deleteImage,
         selectedAlbum,
+        modalVisible,
+        openModal,
+        closeModal,
     }
 }
