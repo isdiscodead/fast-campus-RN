@@ -1,7 +1,7 @@
 import { KeyboardAvoidingView, Modal, Platform, SafeAreaView, TextInput } from "react-native";
 import { SafeAreaView } from "react-native";
 
-export default ({ modalVisible }) => {
+export default ({ modalVisible, albumTitle, setAlbumTitle, onSubmitEditing }) => {
     return (
         <Modal
             animationType="slide"
@@ -14,7 +14,11 @@ export default ({ modalVisible }) => {
             >
                 <View style={{ flex: 1  }}>
                     <SafeAreaView style={{ position: 'absolute', bottom: 0 }}>
-                        <TextInput style={{ width: '100%' }}/>
+                        <TextInput style={{ width: '100%' }}
+                            value={albumTitle}
+                            onChangeText={setAlbumTitle}
+                            onSubmitEditing={onSubmitEditing}
+                        />
                     </SafeAreaView>
                 </View>
             </KeyboardAvoidingView>

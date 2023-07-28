@@ -7,8 +7,11 @@ const width = Dimensions.get('screen').width;
 const columnSize = width / 3.333333 - 10;
 
 export default function App() {
-  const { images, imagesWithAddButton, pickImages, deleteImage, 
-    selectedAlbum, modalVisible, openModal, closeModal } = useGallery();
+  const { 
+    images, imagesWithAddButton, pickImages, deleteImage, 
+    selectedAlbum, addAblum,
+    modalVisible, openModal, closeModal, albumTitle, setAlbumTitle, 
+  } = useGallery();
 
   const onPressOpenGallery = () => {
     pickImages();
@@ -20,6 +23,14 @@ export default function App() {
 
   const onPressAddAlbum = () => {
     openModal();
+  }
+
+  const onSubmitEditing = () => {
+    // 1. 앨범에 타이틀 추가
+    addAblum();
+    // 2. TextInput의 value 초기화 & 모달 닫기
+    closeModal();
+    setAlbumTitle('');
   }
 
   const renderItem = ({ item: {id, uri}, index }) => {
@@ -55,6 +66,9 @@ export default function App() {
       {/* 앨범을 추가하는 텍스트 인풋 모달 */}
       <TextInputModal 
         modalVisible={modalVisible}
+        albumTitle={albumTitle}
+        setAlbumTitle={setAlbumTitle}
+        onSubmitEditing={onSubmitEditing}
       />
 
       {/* 이미지 리스트 */}

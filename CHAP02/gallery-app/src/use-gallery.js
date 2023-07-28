@@ -10,6 +10,7 @@ export const useGallery = () => {
     const [images, setImages] = useState([]);
     const [albums, setAlbums] = useState([defaultAlbum]);
     const [selectedAlbum, setSelectedAlbum] = useState(defaultAlbum);
+    const [albumTitle, setAlbumTitle] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
     
     const pickImages = async () => {
@@ -52,6 +53,20 @@ export const useGallery = () => {
     const openModal = () => setModalVisible(true);
     const closeModal = () => setModalVisible(false);
 
+    const addAblum = () => {
+        const lastId = albums.length === 0 ? -1 : albums[albums.length - 1].id; 
+        const newAlbum = {
+            id: lastId + 1,
+            title: albumTitle,
+        };
+
+        setAlbums([
+            ...albums,
+            newAlbum,
+        ])
+
+    }
+
     const imagesWithAddButton = [
         ...images,
         {
@@ -70,5 +85,8 @@ export const useGallery = () => {
         modalVisible,
         openModal,
         closeModal,
+        albumTitle, 
+        setAlbumTitle,
+        addAblum
     }
 }
