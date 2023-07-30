@@ -26,11 +26,17 @@ export default function App() {
   }
 
   const onSubmitEditing = () => {
+    // 0. 내용이 없을 경우 return 
+    if ( !albumTitle ) return;
     // 1. 앨범에 타이틀 추가
     addAblum();
     // 2. TextInput의 value 초기화 & 모달 닫기
     closeModal();
     setAlbumTitle('');
+  }
+
+  const onPressBackdrop = () => {
+    closeModal();
   }
 
   const renderItem = ({ item: {id, uri}, index }) => {
@@ -69,6 +75,7 @@ export default function App() {
         albumTitle={albumTitle}
         setAlbumTitle={setAlbumTitle}
         onSubmitEditing={onSubmitEditing}
+        onPressBackdrop={onPressBackdrop}
       />
 
       {/* 이미지 리스트 */}
