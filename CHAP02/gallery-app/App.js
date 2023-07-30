@@ -9,8 +9,9 @@ const columnSize = width / 3.333333 - 10;
 export default function App() {
   const { 
     images, imagesWithAddButton, pickImages, deleteImage, 
-    selectedAlbum, addAblum,
+    selectedAlbum, addAlbum, selectAlbum,
     modalVisible, openModal, closeModal, albumTitle, setAlbumTitle, 
+    isDropdownOpen, openDropdown, closeDropdown,
   } = useGallery();
 
   const onPressOpenGallery = () => {
@@ -29,7 +30,7 @@ export default function App() {
     // 0. 내용이 없을 경우 return 
     if ( !albumTitle ) return;
     // 1. 앨범에 타이틀 추가
-    addAblum();
+    addAlbum();
     // 2. TextInput의 value 초기화 & 모달 닫기
     closeModal();
     setAlbumTitle('');
@@ -37,6 +38,19 @@ export default function App() {
 
   const onPressBackdrop = () => {
     closeModal();
+  }
+
+  const onPressHeader = () => {
+    if (isDropdownOpen) {
+      closeDropdown();
+    } else {
+      openDropdown();
+    }
+  }
+
+  const onPressAlbum = () => {
+    selectAlbum();
+    closeDropdown();
   }
 
   const renderItem = ({ item: {id, uri}, index }) => {
@@ -67,7 +81,14 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {/* 앨범 drop down, 앨범 추가 버튼 */}
-      <MyDropDownPicker selectedAlbumTitle={selectedAlbum.title} onPressAddAlbum={onPressAddAlbum} />
+      <MyDropDownPicker 
+        selectedAlbumTitle={selectedAlbum.title} 
+        onPressAddAlbum={onPressAddAlbum} 
+        isDropdownOpen={isDropdownOpen}
+        onPressHeader={onPressHeader}
+        albums={albums}
+        onPressAlbum={onPressAlbum}
+      />
       
       {/* 앨범을 추가하는 텍스트 인풋 모달 */}
       <TextInputModal 
