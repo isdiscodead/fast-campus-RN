@@ -82,7 +82,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       {/* 앨범 drop down, 앨범 추가 버튼 */}
       <MyDropDownPicker 
-        selectedAlbumTitle={selectedAlbum.title} 
+        selectedAlbumTitle={selectedAlbum} 
         onPressAddAlbum={onPressAddAlbum} 
         isDropdownOpen={isDropdownOpen}
         onPressHeader={onPressHeader}

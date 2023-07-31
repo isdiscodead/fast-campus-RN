@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 
 const headerHeight = 50;
 
-export default({ isDropdownOpen, onPressHeader, selectedAlbumTitle, onPressAddAlbum, albums, onPressAlbum }) => {
+export default({ isDropdownOpen, onPressHeader, selectedAlbum, onPressAddAlbum, albums, onPressAlbum }) => {
     return (
         <View>
         <TouchableOpacity 
@@ -16,7 +16,7 @@ export default({ isDropdownOpen, onPressHeader, selectedAlbumTitle, onPressAddAl
                 flexDirection: 'row',
             }}
         >
-            <Text style={{ fontWeight: 'bold' }}>{ selectedAlbumTitle }</Text>
+            <Text style={{ fontWeight: 'bold' }}>{ selectedAlbum.title }</Text>
             <SimpleLineIcons 
                 name={ isDropdownOpen ? 'arrow-down' : 'arrow-up' }
                 size={ 12 }
@@ -40,17 +40,29 @@ export default({ isDropdownOpen, onPressHeader, selectedAlbumTitle, onPressAddAl
                             position: 'absolute',
                             top: headerHeight,
                             width: '100%', 
-                            height: 100,
-                            backgroundColor: 'lightblue',
+                            borderTopColor: 'lightgray',
+                            borderTopWidth: 0.5,
+                            borderBottomColor: 'lightgray',
+                            borderBottomWidth: 0.5,
                         }}
                     >
                         { albums.map((album, idx) => {
-                            <TouchableOpacity
+
+                            const isSelectedAlbum = album.id === selectedAlbum.id;
+
+                            return ( <TouchableOpacity
+                                style={{
+                                    paddingVertical: 10,
+                                    width: '100%',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    backgroundColor: 'white'
+                                }}
                                 onPress={() => onPressAlbum(album)}
                                 key={`album - ${idx}`}
                             >
-                                <Text>{ album.title } </Text>
-                            </TouchableOpacity>
+                                <Text style={{ fontWeight: isSelectedAlbum ? 'bold' : undefined }}>{ album.title } </Text>
+                            </TouchableOpacity>);
                         }) }
                     </View>
                 )}
