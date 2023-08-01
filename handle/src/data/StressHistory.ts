@@ -1,3 +1,3 @@
 export type StressHistory = {
-    id?: number;
-}
+  id?: number;
+};
