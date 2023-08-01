@@ -30,8 +30,9 @@ export const useGallery = () => {
         const newImage = {
             id: lastId + 1,
             uri: result.assets[0].uri,
+            albumId: selectAlbum.id,
         }
-        setImages([...images, result.assets[0].uri]);
+        setImages([...images, newImage]);
       }
     };
 
@@ -75,6 +76,8 @@ export const useGallery = () => {
         setSelectedAlbum(album);
     }
 
+    const filteredImages = images.filter((image) => image.albumId === selectedAlbum.id )
+
     const imagesWithAddButton = [
         ...images,
         {
@@ -85,7 +88,7 @@ export const useGallery = () => {
     ]
 
     return {
-        images,
+        images: filteredImages,
         imagesWithAddButton,
         pickImages,
         deleteImage,
