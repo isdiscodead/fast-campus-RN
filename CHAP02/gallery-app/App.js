@@ -9,7 +9,7 @@ const columnSize = width / 3.333333 - 10;
 export default function App() {
   const { 
     images, imagesWithAddButton, pickImages, deleteImage, 
-    selectedAlbum, addAlbum, selectAlbum,
+    selectedAlbum, addAlbum, selectAlbum, albums,
     modalVisible, openModal, closeModal, albumTitle, setAlbumTitle, 
     isDropdownOpen, openDropdown, closeDropdown,
   } = useGallery();
@@ -82,7 +82,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       {/* 앨범 drop down, 앨범 추가 버튼 */}
       <MyDropDownPicker 
-        selectedAlbumTitle={selectedAlbum} 
+        selectedAlbum={selectedAlbum} 
         onPressAddAlbum={onPressAddAlbum} 
         isDropdownOpen={isDropdownOpen}
         onPressHeader={onPressHeader}

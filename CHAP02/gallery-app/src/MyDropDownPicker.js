@@ -16,7 +16,7 @@ export default({ isDropdownOpen, onPressHeader, selectedAlbum, onPressAddAlbum, 
                 flexDirection: 'row',
             }}
         >
-            <Text style={{ fontWeight: 'bold' }}>{ selectedAlbum.title }</Text>
+            <Text style={{ fontWeight: 'bold' }}>{ selectedAlbum ? selectedAlbum.title : '' }</Text>
             <SimpleLineIcons 
                 name={ isDropdownOpen ? 'arrow-down' : 'arrow-up' }
                 size={ 12 }
@@ -47,6 +47,7 @@ export default({ isDropdownOpen, onPressHeader, selectedAlbum, onPressAddAlbum, 
                         }}
                     >
                         { albums.map((album, idx) => {
+                            console.log(album, selectedAlbum)
 
                             const isSelectedAlbum = album.id === selectedAlbum.id;
 

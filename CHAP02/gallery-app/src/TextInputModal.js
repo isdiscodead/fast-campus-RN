@@ -1,5 +1,4 @@
-import { KeyboardAvoidingView, Modal, Platform, SafeAreaView, TextInput } from "react-native";
-import { SafeAreaView } from "react-native";
+import { KeyboardAvoidingView, Modal, Platform, SafeAreaView, TextInput, Pressable } from "react-native";
 
 export default ({ modalVisible, albumTitle, setAlbumTitle, onSubmitEditing, onPressBackdrop }) => {
     return (
@@ -14,7 +13,7 @@ export default ({ modalVisible, albumTitle, setAlbumTitle, onSubmitEditing, onPr
             >
                 <Pressable onPress={onPressBackdrop} style={{ flex: 1  }}>
                     <SafeAreaView style={{ position: 'absolute', bottom: 0 }}>
-                        <TextInput style={{ width: '100%', padding: 10, borderColor: 'light-grey'}}
+                        <TextInput style={{ width: '100%', padding: 10, borderColor: '#999'}}
                             value={albumTitle}
                             onChangeText={setAlbumTitle}
                             onSubmitEditing={onSubmitEditing}
