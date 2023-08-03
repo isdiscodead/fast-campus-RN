@@ -69,7 +69,6 @@ export const useGallery = () => {
             ...albums,
             newAlbum,
         ])
-
     }
 
     const selectAlbum = (album) => {

@@ -24,7 +24,7 @@ export default({ isDropdownOpen, onPressHeader, selectedAlbum, onPressAddAlbum, 
                 style={{ marginLeft: 8 }}
             />
 
-            <View 
+            <TouchableOpacity 
                 onPress={onPressAddAlbum}
                 style={{ position: "absolute", right: 0, height: headerHeight, 
                     justifyContent: 'center', alignItems: 'center',
@@ -32,7 +32,7 @@ export default({ isDropdownOpen, onPressHeader, selectedAlbum, onPressAddAlbum, 
                 }}
             >
                 <Text style={{ fontSize: 12 }}>앨범 추가</Text>
-            </View>
+            </TouchableOpacity>
         </TouchableOpacity>
             { isDropdownOpen && (
                     <View
