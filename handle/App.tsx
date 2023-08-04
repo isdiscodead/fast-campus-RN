@@ -1,23 +1,12 @@
 import React from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { RootNavigation } from './src/navigations/RootNavigation';
+import {NavigationContainer} from '@react-navigation/native';
+import {RootNavigation} from './src/navigations/RootNavigation';
 
-import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {StatusBar, StyleSheet, Text, useColorScheme, View} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
-
-
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -28,16 +17,14 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaProvider>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
 
-        <StatusBar 
-          barStyle={ isDarkMode ? 'light-content' : 'dark-content' }
-          backgroundColor={ backgroundStyle.backgroundColor}
-        />
-
-        <NavigationContainer>
-          <RootNavigation />
-        </NavigationContainer>
-
+      <NavigationContainer>
+        <RootNavigation />
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
