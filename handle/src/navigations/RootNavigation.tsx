@@ -5,7 +5,6 @@ import {
 import React from 'react';
 import {MainScreen} from '../screens/MainScreen';
 import {AddUpdateScreen} from '../screens/AddUpdateScreen';
-import {DetailScreen} from '../screens/DetailScreen';
 import {RouteProp, useNavigation} from '@react-navigation/native';
 
 type ScreenParams = {
