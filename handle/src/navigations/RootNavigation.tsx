@@ -9,6 +9,7 @@ import {RouteProp, useNavigation} from '@react-navigation/native';
 
 type ScreenParams = {
   Main: undefined;
+  Update: undefined;
 };
 
 const Stack = createNativeStackNavigator<ScreenParams>();
@@ -18,8 +19,7 @@ export const RootNavigation = () => {
     <Stack.Navigator
       screenOptions={{headerShown: false, presentation: 'containedModal'}}>
       <Stack.Screen name="Main" component={MainScreen} />
-      <Stack.Screen name="Add" component={AddUpdateScreen} />
-      {/* <Stack.Screen name="Update" component={AddUpdateScreen} /> */}
+      <Stack.Screen name="Update" component={AddUpdateScreen} />
       {/* <Stack.Screen name="Detail" component={DetailScreen} /> */}
     </Stack.Navigator>
   );
