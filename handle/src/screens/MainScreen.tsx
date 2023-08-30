@@ -1,22 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useEffect, useState} from 'react';
 import {Header} from '../components/Header/Header';
-import {
-  View,
-  ImageBackground,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import GoogleFit, {Scopes} from 'react-native-google-fit';
 import {MainCard} from '../components/Main/MainCard';
 import {Typography} from '../components/Typography';
-import {NavigationBar} from '../components/Navigation/NavigationBar';
-import {TabIcon} from '../components/Navigation/TabIcon';
 import {useRootNavigation} from '../navigations/RootNavigation';
+import {Background} from '../components/Background';
+import NavTabBar from '../components/Navigation/NavTabBar';
+import dayjs from 'dayjs';
+import RecommendAct from '../components/Main/RecommendAct';
 
 export const MainScreen: React.FC = () => {
+  // nav
   const navigation = useRootNavigation();
 
+  // datetime
+  const today = dayjs();
+  const lastWeekDate = today.subtract(1, 'week');
+
+  // health data
   var [dailySteps, setdailySteps] = useState(0);
   var [heartRate, setHeartRate] = useState(0);
   var [calories, setCalories] = useState(0);
@@ -42,13 +47,6 @@ export const MainScreen: React.FC = () => {
   };
 
   // 헬스 데이터 가져오기
-  var today = new Date();
-  var lastWeekDate = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() - 8,
-  );
-
   const opt = {
     startDate: lastWeekDate.toISOString(), // required ISO8601Timestamp
     endDate: today.toISOString(), // required ISO8601Timestamp
@@ -99,10 +97,7 @@ export const MainScreen: React.FC = () => {
 
   return (
     <View style={{flex: 1}}>
-      <ImageBackground
-        source={require('../imgs/background.jpeg')}
-        style={{flex: 1}}
-        blurRadius={30}>
+      <Background>
         <Header>
           <Header.Title title={'🫧 Handle'} />
         </Header>
@@ -121,18 +116,7 @@ export const MainScreen: React.FC = () => {
             <Text>👀 생체 시계와 건강 정보를 토대로 추천되는 활동입니다.</Text>
           </View>
 
-          <Typography fontSize={16}>
-            ✓{' '}
-            {
-              '저녁 시간이 다가오고 있어요! 저녁 식사 전에 가벼운 운동 어떠신가요?'
-            }
-          </Typography>
-          <Typography fontSize={16}>
-            ✓{' '}
-            {
-              '현재 걸음 수가 충분히 높으시네요, 부지런히 돌아다니신 것 같아요. 칭찬합니다 👏'
-            }
-          </Typography>
+          <RecommendAct />
         </View>
 
         <View>
@@ -195,21 +179,8 @@ export const MainScreen: React.FC = () => {
             content={dailySteps ? dailySteps + ' %' : '97 %'}
           />
         </ScrollView>
-
-        <NavigationBar>
-          <TabIcon
-            visibleBadge={false}
-            iconName="stats-chart-outline"
-            iconColor="white"
-          />
-          <TabIcon visibleBadge={false} iconName="home" iconColor="white" />
-          <TabIcon
-            visibleBadge={false}
-            iconName="settings-outline"
-            iconColor="white"
-          />
-        </NavigationBar>
-      </ImageBackground>
+        <NavTabBar />
+      </Background>
     </View>
   );
 };

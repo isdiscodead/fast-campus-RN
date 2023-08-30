@@ -1,7 +1,11 @@
 import React from 'react';
-import {ImageBackground, View} from 'react-native';
+import {ImageBackground} from 'react-native';
 
-export const Background: React.FC = ({children}) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+export const Background = ({children}: Props) => {
   return (
     <ImageBackground
       source={require('../imgs/background.jpeg')}

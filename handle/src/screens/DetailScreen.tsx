@@ -1,14 +1,20 @@
 import React from 'react';
-import {Header} from '../components/Header/Header';
-import {View} from 'react-native';
+import { Header } from '../components/Header/Header';
+import { Background } from '../components/Background';
+import NavTabBar from '../components/Navigation/NavTabBar';
+import AddFile from '../components/AddUpdate/AddFile';
+import AddStress from '../components/AddUpdate/AddStress';
 
 export const DetailScreen: React.FC = () => {
   return (
-    <View style={{flex: 1}}>
+    <Background>
       <Header>
         <Header.Title title="기록 추가하기" />
         <Header.Icon iconName="close" onPress={() => {}} />
       </Header>
-    </View>
+      <AddFile />
+      <AddStress />
+      <NavTabBar />
+    </Background>
   );
 };

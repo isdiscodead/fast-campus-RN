@@ -1,35 +1,29 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import { Typography } from '../Typography';
+import {View} from 'react-native';
+import {Typography} from '../Typography';
+import WhiteBox from '../StyledComponent/WhiteBox';
 
 export const MainCard: React.FC<{
-    content: string;
-    title: string;
-  }> = props => {
-
+  content: string;
+  title: string;
+}> = props => {
   return (
-    <View
+    <WhiteBox
       style={{
-        backgroundColor: "#ffffff40",
-        borderBottomColor: '#fff',
-        borderBottomWidth: 1,
-        borderRadius: 10,
         width: 150,
         height: 100,
         margin: 10,
-      }}
-    >
-      <View 
+      }}>
+      <View
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           padding: 20,
-        }}
-      >
+        }}>
         <Typography fontSize={14}>{props.title}</Typography>
         <Typography fontSize={18}>{props.content}</Typography>
       </View>
-    </View>
+    </WhiteBox>
   );
 };

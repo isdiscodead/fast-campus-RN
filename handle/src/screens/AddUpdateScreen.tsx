@@ -1,27 +1,32 @@
 import React from 'react';
-import {Header} from '../components/Header/Header';
-import {ImageBackground, View} from 'react-native';
-import {useRootNavigation} from '../navigations/RootNavigation';
+import { View } from 'react-native';
+import { Header } from '../components/Header/Header';
+import { useRootNavigation } from '../navigations/RootNavigation';
+import { Background } from '../components/Background';
+import NavTabBar from '../components/Navigation/NavTabBar';
+import AddFile from '../components/AddUpdate/AddFile';
+import AddStress from '../components/AddUpdate/AddStress';
 
 export const AddUpdateScreen: React.FC = () => {
   const navigation = useRootNavigation();
 
   return (
-    <View style={{flex: 1}}>
-      <ImageBackground
-        source={require('../imgs/background.jpeg')}
-        style={{flex: 1}}
-        blurRadius={30}>
-        <Header>
-          <Header.Title title="기록 추가하기" />
-          <Header.Icon
-            iconName="close"
-            onPress={() => {
-              navigation.pop();
-            }}
-          />
-        </Header>
-      </ImageBackground>
+    <View style={{ flex: 1 }}>
+      <Background>
+        <View style={{ flex: 1 }}>
+          <Header>
+            <Header.Title title="기록 추가하기" />
+            <Header.Icon
+              iconName="close"
+              onPress={() => {
+                navigation.pop();
+              }}
+            />
+          </Header>
+
+          <NavTabBar />
+        </View>
+      </Background>
     </View>
   );
 };

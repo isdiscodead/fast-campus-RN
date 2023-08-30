@@ -1,11 +1,12 @@
+import React from 'react';
 import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import React from 'react';
-import {MainScreen} from '../screens/MainScreen';
-import {AddUpdateScreen} from '../screens/AddUpdateScreen';
-import {RouteProp, useNavigation} from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
+
+import { MainScreen } from '../screens/MainScreen';
+import { AddUpdateScreen } from '../screens/AddUpdateScreen';
 
 type ScreenParams = {
   Main: undefined;
@@ -17,7 +18,7 @@ const Stack = createNativeStackNavigator<ScreenParams>();
 export const RootNavigation = () => {
   return (
     <Stack.Navigator
-      screenOptions={{headerShown: false, presentation: 'containedModal'}}>
+      screenOptions={{ headerShown: false, presentation: 'containedModal' }}>
       <Stack.Screen name="Main" component={MainScreen} />
       <Stack.Screen name="Update" component={AddUpdateScreen} />
       {/* <Stack.Screen name="Detail" component={DetailScreen} /> */}
