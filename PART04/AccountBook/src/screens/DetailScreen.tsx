@@ -4,15 +4,15 @@ import {View} from 'react-native';
 
 type Props = {};
 
-function AddUpdateScreen({}: Props) {
+function DetailScreen({}: Props) {
   return (
     <View>
       <Header>
-        <Header.Title title="ADD/UPDATE SCREEN" />
+        <Header.Title title="DETAIL SCREEN" />
         <Header.Icon iconName="close" onPress={() => {}} />
       </Header>
     </View>
   );
 }
 
-export default AddUpdateScreen;
+export default DetailScreen;
