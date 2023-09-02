@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import { Header } from '../components/Header/Header';
 import { useRootNavigation } from '../navigations/RootNavigation';
 import { Background } from '../components/Background';
-import NavTabBar from '../components/Navigation/NavTabBar';
 import AddFile from '../components/AddUpdate/AddFile';
 import AddStress from '../components/AddUpdate/AddStress';
 
@@ -23,8 +22,8 @@ export const AddUpdateScreen: React.FC = () => {
               }}
             />
           </Header>
-
-          <NavTabBar />
+          <AddFile />
+          <AddStress />
         </View>
       </Background>
     </View>

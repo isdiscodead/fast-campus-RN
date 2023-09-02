@@ -22,8 +22,16 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>LSRequiresIPhoneOS</key>
+	<key>UIFileSharingEnabled</key>
 	<true/>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>으아아ㅏ아</string>
+	<key>NSFileProviderDomainUsageDescription</key>
+	<string>으아아ㅏ아</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>으아아ㅏ아</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -51,7 +59,6 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-
 	<key>UIAppFonts</key>
 	<array>
 		<string>Ionicons.ttf</string>

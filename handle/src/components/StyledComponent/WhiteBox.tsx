@@ -1,12 +1,12 @@
-import React from 'react';
-import {View} from 'react-native';
+import * as React from 'react';
+import { View } from 'react-native';
 
 type Props = {
   children?: React.ReactNode;
-  style?: HTMLStyleElement;
+  style?: any;
 };
 
-function WhiteBox({children, style}: Props) {
+function WhiteBox({ children, style }: Props) {
   return (
     <View
       style={{

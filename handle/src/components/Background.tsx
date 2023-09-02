@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import {ImageBackground} from 'react-native';
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const Background = ({children}: Props) => {

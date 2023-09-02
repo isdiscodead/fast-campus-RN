@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ScrollView } from 'react-native';
 import { Typography } from '../Typography';
 import QuestionCard from './QuestionCard';
