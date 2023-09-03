@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {Image as RNImage, StyleProp, ImageStyle} from 'react-native';
 
 // export class RemoteImage extends React.Component{

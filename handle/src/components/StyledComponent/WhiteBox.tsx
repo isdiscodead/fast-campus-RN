@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import styled from 'styled-components/native';
 
 type Props = {
   children?: React.ReactNode;
@@ -8,17 +8,20 @@ type Props = {
 
 function WhiteBox({ children, style }: Props) {
   return (
-    <View
+    <Container
       style={{
-        backgroundColor: '#ffffff40',
-        borderBottomColor: '#fff',
-        borderBottomWidth: 1,
-        borderRadius: 10,
         ...style,
       }}>
       {children}
-    </View>
+    </Container>
   );
 }
+
+const Container = styled.View`
+  background-color: #ffffff40;
+  border-bottom: 1px solid white;
+  border-radius: 10px;
+  margin: 5px auto;
+`;
 
 export default WhiteBox;

@@ -3,8 +3,9 @@ import * as React from 'react';
 import { useState } from 'react';
 import WhiteBox from '../StyledComponent/WhiteBox';
 import { Typography } from '../Typography';
+import Slider from '@react-native-assets/slider/dist/Slider';
+import { Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import Slider from '@react-native-assets/slider/dist/RangeSlider';
 
 type Props = {
   question?: string | undefined;
@@ -16,24 +17,47 @@ function QuestionCard({ question }: Props) {
   return (
     <WhiteBox
       style={{
-        width: '90%',
-        height: '100%',
+        width: '95%',
+        padding: '5%',
       }}>
-      <Typography>질문 어쩌구저쩌구{question ? question : ''}</Typography>
+      <Typography fontSize={16}>
+        질문 어쩌구저쩌구{question ? question : ''}
+      </Typography>
       <Slider
-        style={{}}
+        value={sliderValue}
         minimumValue={1}
         maximumValue={5}
-        value={sliderValue}
         step={1}
-        inverted={true}
-        vertical={true}
-        minimumTrackTintColor="blue"
-        maximumTrackTintColor="red"
+        minimumTrackTintColor="pink"
+        maximumTrackTintColor="white"
+        slideOnTap={true}
         onValueChange={setSliderValue}
       />
+      <Labels>
+        <TouchableOpacity onPress={() => setSliderValue(1)}>
+          <Text>전혀 X</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setSliderValue(2)}>
+          <Text>다소 X</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setSliderValue(3)}>
+          <Text>보통</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setSliderValue(4)}>
+          <Text>다소 O</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setSliderValue(5)}>
+          <Text>매우 O</Text>
+        </TouchableOpacity>
+      </Labels>
     </WhiteBox>
   );
 }
+
+const Labels = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export default QuestionCard;

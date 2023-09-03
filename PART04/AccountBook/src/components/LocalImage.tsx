@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {Image as RNImage, ImageProps, StyleProp} from 'react-native';
 
 // export class LocalImage extends React.Component {

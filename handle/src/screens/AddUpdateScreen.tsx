@@ -5,6 +5,7 @@ import { useRootNavigation } from '../navigations/RootNavigation';
 import { Background } from '../components/Background';
 import AddFile from '../components/AddUpdate/AddFile';
 import AddStress from '../components/AddUpdate/AddStress';
+import AddButtons from '../components/AddUpdate/AddButtons';
 
 export const AddUpdateScreen: React.FC = () => {
   const navigation = useRootNavigation();
@@ -24,6 +25,7 @@ export const AddUpdateScreen: React.FC = () => {
           </Header>
           <AddFile />
           <AddStress />
+          <AddButtons />
         </View>
       </Background>
     </View>

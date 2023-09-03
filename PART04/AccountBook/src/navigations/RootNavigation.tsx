@@ -2,7 +2,7 @@ import {
   NativeStackNavigationProp,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import React from 'react';
+import * as React from 'react';
 import MainScreen from '../screens/MainScreen';
 import DetailScreen from '../screens/DetailScreen';
 import AddUpdateScreen from '../screens/AddUpdateScreen';
