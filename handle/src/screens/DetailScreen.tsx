@@ -9,7 +9,7 @@ export const DetailScreen: React.FC = () => {
   return (
     <Background>
       <Header>
-        <Header.Title title="기록 추가하기" />
+        <Header.Title title="기록 상세보기" />
         <Header.Icon iconName="close" onPress={() => {}} />
       </Header>
       <AddFile />

@@ -33,6 +33,7 @@ const questions = [
 function AddStress({}: Props) {
   const [qPage, setQPage] = React.useState(0);
   const score = React.useRef(0);
+  const [finalScore, setFinalScore] = React.useState(0);
 
   React.useEffect(() => {
     console.log(qPage);
@@ -59,7 +60,13 @@ function AddStress({}: Props) {
   const getScore = () => {
     // 응답 수 확인 ( TODO: 모자르면 alert )
     if (answer.current.length < 21) {
-      return;
+      // 일단 0으로 채움
+      for (let i = 0; i < 21; i++) {
+        if (answer.current[i] && answer.current[i].idx !== i) {
+          answer.current.push({ idx: i, value: 0 });
+        }
+      }
+      // return;
     }
     // idx 순으로 정렬
     answer.current.sort((a, b) => a.idx - b.idx);
@@ -72,11 +79,11 @@ function AddStress({}: Props) {
     ];
 
     answer.current.map((e, i) => {
-      console.log(e.value, bias[i]);
+      console.log(e.value, bias[i], score.current);
       score.current += e.value * bias[i];
     });
 
-    console.log(score.current);
+    setFinalScore(score.current);
   };
 
   return (
@@ -87,7 +94,7 @@ function AddStress({}: Props) {
           ? '지난 일주일 동안, 각 문항을 얼마나 경험했는지 체크해주세요'
           : score.current}
       </Text>
-      {score.current === 0 && (
+      {finalScore === 0 && (
         <ScrollView horizontal={false} style={{ width: '100%' }}>
           {questions[qPage].map((e, i) => (
             <QuestionCard
@@ -100,10 +107,16 @@ function AddStress({}: Props) {
           ))}
         </ScrollView>
       )}
-      {score.current !== 0 && (
+      {finalScore !== 0 && (
         <View>
-          <Text>점수 : {score.current}</Text>
-          <Text>높은 스트레스 상태에 놓여있을 수 있습니다</Text>
+          <Text>점수 : {finalScore}</Text>
+          <Text>
+            {finalScore > 13
+              ? finalScore < 16
+                ? '평균적인 스트레스 상태입니다.'
+                : '높은 스트레스 상태에 놓여있을 수 있습니다.'
+              : '평온한 상태입니다.'}
+          </Text>
           <Button onPress={() => console.log('기록 완료')}>
             <Text>기록하기</Text>
           </Button>
@@ -143,6 +156,8 @@ const ButtonContainer = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+  padding: 20px;
 `;
 
 export default AddStress;

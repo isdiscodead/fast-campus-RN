@@ -2,6 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { Platform } from 'react-native';
 import { Header } from '../components/Header/Header';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit';
@@ -92,92 +93,94 @@ export const MainScreen: React.FC = () => {
     },
   } as HealthKitPermissions;
 
-  AppleHealthKit.initHealthKit(permissions, (error: string) => {
-    /* Called after we receive a response from the system */
-
-    if (error) {
-      console.log('[ERROR] Cannot grant permissions!');
-    }
-
-    /* Can now read or write to HealthKit */
-
-    const healthKitOptions = {
-      startDate: dayjs().subtract(1, 'day').toISOString(),
-    };
-
-    AppleHealthKit.getElectrocardiogramSamples(
-      healthKitOptions,
-      (callbackError: string, results: ElectrocardiogramSampleValue[]) => {
-        /* Samples are now collected from HealthKit */
-        console.log('ECG', results[results.length - 1]); // [[시간, 값]] 형태 ...
-        setECG(results[results.length - 1]);
-      },
-    );
-
-    AppleHealthKit.getDailyStepCountSamples(
-      healthKitOptions,
-      (callbackError: string, results: HealthValue[]) => {
-        /* Samples are now collected from HealthKit */
-        console.log('step', results); // [[시간, 값]] 형태 ...
-        // setdailySteps(results);
-      },
-    );
-
-    AppleHealthKit.getActiveEnergyBurned(
-      healthKitOptions,
-      (callbackError: string, results: HealthValue[]) => {
-        /* Samples are now collected from HealthKit */
-        console.log('Acvtive Energey', results[results.length - 1]); // [[시간, 값]] 형태 ...
-        setCalories(results[results.length - 1].value);
-      },
-    );
-
-    AppleHealthKit.getOxygenSaturationSamples(
-      healthKitOptions,
-      (callbackError: string, results: HealthValue[]) => {
-        /* Samples are now collected from HealthKit */
-        console.log('Hydration', results[results.length - 1]); // [[시간, 값]] 형태 ...
-        setHydration(results[results.length - 1].value);
-      },
-    );
-
-    AppleHealthKit.getBloodPressureSamples(
-      healthKitOptions,
-      (callbackError: string, results: BloodPressureSampleValue[]) => {
-        /* Samples are now collected from HealthKit */
-        console.log('BP', results[results.length - 1]); // [[시간, 값]] 형태 ...
-        setBloodPressure(
-          results[results.length - 1].bloodPressureDiastolicValue,
-        );
-      },
-    );
-  });
-
   useEffect(() => {
-    GoogleFit.checkIsAuthorized().then(() => {
-      var authorized = GoogleFit.isAuthorized;
-      console.log('authorized: ' + authorized);
+    if (Platform.OS === 'ios') {
+      AppleHealthKit.initHealthKit(permissions, (error: string) => {
+        /* Called after we receive a response from the system */
 
-      if (authorized) {
-        // if already authorized, fetch data
-        fetchStepsData(opt);
-      } else {
-        // Authentication if already not authorized for a particular device
-        GoogleFit.authorize(googleFitOptions)
-          .then(authResult => {
-            if (authResult.success) {
-              // if successfully authorized, fetch data
-              console.log('AUTH_SUCCESS');
-              fetchStepsData(opt);
-            } else {
-              console.log('AUTH_DENIED ' + authResult.message);
-            }
-          })
-          .catch(() => {
-            console.log('AUTH_ERROR');
-          });
-      }
-    });
+        if (error) {
+          console.log('[ERROR] Cannot grant permissions!');
+        }
+
+        /* Can now read or write to HealthKit */
+
+        const healthKitOptions = {
+          startDate: dayjs().subtract(1, 'day').toISOString(),
+        };
+
+        AppleHealthKit.getElectrocardiogramSamples(
+          healthKitOptions,
+          (callbackError: string, results: ElectrocardiogramSampleValue[]) => {
+            /* Samples are now collected from HealthKit */
+            console.log('ECG', results[results.length - 1]); // [[시간, 값]] 형태 ...
+            setECG(results[results.length - 1]);
+          },
+        );
+
+        AppleHealthKit.getDailyStepCountSamples(
+          healthKitOptions,
+          (callbackError: string, results: HealthValue[]) => {
+            /* Samples are now collected from HealthKit */
+            console.log('step', results); // [[시간, 값]] 형태 ...
+            // setdailySteps(results);
+          },
+        );
+
+        AppleHealthKit.getActiveEnergyBurned(
+          healthKitOptions,
+          (callbackError: string, results: HealthValue[]) => {
+            /* Samples are now collected from HealthKit */
+            console.log('Acvtive Energey', results[results.length - 1]); // [[시간, 값]] 형태 ...
+            setCalories(results[results.length - 1].value);
+          },
+        );
+
+        AppleHealthKit.getOxygenSaturationSamples(
+          healthKitOptions,
+          (callbackError: string, results: HealthValue[]) => {
+            /* Samples are now collected from HealthKit */
+            console.log('Hydration', results[results.length - 1]); // [[시간, 값]] 형태 ...
+            setHydration(results[results.length - 1].value);
+          },
+        );
+
+        AppleHealthKit.getBloodPressureSamples(
+          healthKitOptions,
+          (callbackError: string, results: BloodPressureSampleValue[]) => {
+            /* Samples are now collected from HealthKit */
+            console.log('BP', results[results.length - 1]); // [[시간, 값]] 형태 ...
+            setBloodPressure(
+              results[results.length - 1].bloodPressureDiastolicValue,
+            );
+          },
+        );
+      });
+    } else {
+      GoogleFit.checkIsAuthorized().then(() => {
+        var authorized = GoogleFit.isAuthorized;
+        console.log('authorized: ' + authorized);
+
+        if (authorized) {
+          // if already authorized, fetch data
+          fetchStepsData(opt);
+        } else {
+          // Authentication if already not authorized for a particular device
+          GoogleFit.authorize(googleFitOptions)
+            .then(authResult => {
+              if (authResult.success) {
+                // if successfully authorized, fetch data
+                console.log('AUTH_SUCCESS');
+                fetchStepsData(opt);
+              } else {
+                console.log('AUTH_DENIED ' + authResult.message);
+              }
+            })
+            .catch(() => {
+              console.log('AUTH_ERROR');
+            });
+        }
+      });
+    }
   }, []);
 
   return (
@@ -257,7 +260,7 @@ export const MainScreen: React.FC = () => {
           />
           <MainCard
             title={'🩸 혈압'}
-            content={bloodPressure ? bloodPressure + '' : '85'}
+            content={bloodPressure ? bloodPressure.toString() : '85'}
           />
           <MainCard
             title={'🍃 활성 산소'}
