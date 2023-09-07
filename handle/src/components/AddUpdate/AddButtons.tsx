@@ -22,6 +22,10 @@ function AddButtons({}: Props) {
   );
 }
 
-const Container = styled.View``;
+const Container = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
 
 export default AddButtons;

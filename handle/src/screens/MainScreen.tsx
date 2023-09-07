@@ -1,17 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, {useEffect, useState} from 'react';
-import {Header} from '../components/Header/Header';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
-import GoogleFit, {Scopes} from 'react-native-google-fit';
-import {MainCard} from '../components/Main/MainCard';
-import {Typography} from '../components/Typography';
-import {useRootNavigation} from '../navigations/RootNavigation';
-import {Background} from '../components/Background';
+import React, { useEffect, useState } from 'react';
+import { Header } from '../components/Header/Header';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import GoogleFit, { Scopes } from 'react-native-google-fit';
+import { MainCard } from '../components/Main/MainCard';
+import { Typography } from '../components/Typography';
+import { useRootNavigation } from '../navigations/RootNavigation';
+import { Background } from '../components/Background';
 import NavTabBar from '../components/Navigation/NavTabBar';
 import dayjs from 'dayjs';
 import RecommendAct from '../components/Main/RecommendAct';
+import AppleHealthKit, {
+  HealthKitPermissions,
+  ElectrocardiogramSampleValue,
+  HealthValue,
+  BloodPressureSampleValue,
+} from 'react-native-health';
 
 export const MainScreen: React.FC = () => {
   // nav
@@ -28,10 +34,11 @@ export const MainScreen: React.FC = () => {
   var [hydration, setHydration] = useState(0);
   var [sleep, setSleep] = useState(0);
   var [bloodPressure, setBloodPressure] = useState({});
+  var [ECG, setECG] = useState<ElectrocardiogramSampleValue>();
   var [loading, setLoading] = useState(true);
 
   // Google Fit 초기화
-  const options = {
+  const googleFitOptions = {
     scopes: [
       Scopes.FITNESS_ACTIVITY_READ,
       Scopes.FITNESS_ACTIVITY_WRITE,
@@ -68,6 +75,84 @@ export const MainScreen: React.FC = () => {
     }
   };
 
+  /* Permission options */
+
+  const permissions = {
+    permissions: {
+      read: [
+        AppleHealthKit.Constants.Permissions.Electrocardiogram,
+        AppleHealthKit.Constants.Permissions.StepCount,
+        AppleHealthKit.Constants.Permissions.ActiveEnergyBurned,
+        AppleHealthKit.Constants.Permissions.OxygenSaturation,
+        AppleHealthKit.Constants.Permissions.SleepAnalysis,
+        AppleHealthKit.Constants.Permissions.BloodPressureDiastolic,
+        AppleHealthKit.Constants.Permissions.HeartRate,
+      ],
+      write: [],
+    },
+  } as HealthKitPermissions;
+
+  AppleHealthKit.initHealthKit(permissions, (error: string) => {
+    /* Called after we receive a response from the system */
+
+    if (error) {
+      console.log('[ERROR] Cannot grant permissions!');
+    }
+
+    /* Can now read or write to HealthKit */
+
+    const healthKitOptions = {
+      startDate: dayjs().subtract(1, 'day').toISOString(),
+    };
+
+    AppleHealthKit.getElectrocardiogramSamples(
+      healthKitOptions,
+      (callbackError: string, results: ElectrocardiogramSampleValue[]) => {
+        /* Samples are now collected from HealthKit */
+        console.log('ECG', results[results.length - 1]); // [[시간, 값]] 형태 ...
+        setECG(results[results.length - 1]);
+      },
+    );
+
+    AppleHealthKit.getDailyStepCountSamples(
+      healthKitOptions,
+      (callbackError: string, results: HealthValue[]) => {
+        /* Samples are now collected from HealthKit */
+        console.log('step', results); // [[시간, 값]] 형태 ...
+        // setdailySteps(results);
+      },
+    );
+
+    AppleHealthKit.getActiveEnergyBurned(
+      healthKitOptions,
+      (callbackError: string, results: HealthValue[]) => {
+        /* Samples are now collected from HealthKit */
+        console.log('Acvtive Energey', results[results.length - 1]); // [[시간, 값]] 형태 ...
+        setCalories(results[results.length - 1].value);
+      },
+    );
+
+    AppleHealthKit.getOxygenSaturationSamples(
+      healthKitOptions,
+      (callbackError: string, results: HealthValue[]) => {
+        /* Samples are now collected from HealthKit */
+        console.log('Hydration', results[results.length - 1]); // [[시간, 값]] 형태 ...
+        setHydration(results[results.length - 1].value);
+      },
+    );
+
+    AppleHealthKit.getBloodPressureSamples(
+      healthKitOptions,
+      (callbackError: string, results: BloodPressureSampleValue[]) => {
+        /* Samples are now collected from HealthKit */
+        console.log('BP', results[results.length - 1]); // [[시간, 값]] 형태 ...
+        setBloodPressure(
+          results[results.length - 1].bloodPressureDiastolicValue,
+        );
+      },
+    );
+  });
+
   useEffect(() => {
     GoogleFit.checkIsAuthorized().then(() => {
       var authorized = GoogleFit.isAuthorized;
@@ -78,7 +163,7 @@ export const MainScreen: React.FC = () => {
         fetchStepsData(opt);
       } else {
         // Authentication if already not authorized for a particular device
-        GoogleFit.authorize(options)
+        GoogleFit.authorize(googleFitOptions)
           .then(authResult => {
             if (authResult.success) {
               // if successfully authorized, fetch data
@@ -96,7 +181,7 @@ export const MainScreen: React.FC = () => {
   }, []);
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <Background>
         <Header>
           <Header.Title title={'🫧 Handle'} />
@@ -140,7 +225,7 @@ export const MainScreen: React.FC = () => {
           style={{
             textAlign: 'center',
           }}>
-          06/01 - ⏲️ 15:23 기준 건강 정보
+          {`${dayjs().month()}/${dayjs().date()} - ⏲️ ${dayjs().hour()}:${dayjs().minute()} 기준 건강 정보`}
         </Text>
 
         <ScrollView
@@ -156,11 +241,11 @@ export const MainScreen: React.FC = () => {
           />
           <MainCard
             title={'🔥 활동 칼로리'}
-            content={dailySteps ? dailySteps + ' Kcal' : '234 Kcal'}
+            content={calories ? calories + ' Kcal' : '234 Kcal'}
           />
           <MainCard
             title={'💤 수면  시간'}
-            content={dailySteps ? dailySteps + ' 시간' : '7.3 시간'}
+            content={sleep ? sleep + ' 시간' : '7.3 시간'}
           />
           <MainCard
             title={'😪 전날 취침 시각'}
@@ -168,15 +253,15 @@ export const MainScreen: React.FC = () => {
           />
           <MainCard
             title={'♥️ 평균 심박수'}
-            content={dailySteps ? dailySteps + ' bpm' : '92 bpm'}
+            content={heartRate ? heartRate + ' bpm' : '92 bpm'}
           />
           <MainCard
             title={'🩸 혈압'}
-            content={dailySteps ? dailySteps + '' : '85'}
+            content={bloodPressure ? bloodPressure + '' : '85'}
           />
           <MainCard
             title={'🍃 활성 산소'}
-            content={dailySteps ? dailySteps + ' %' : '97 %'}
+            content={hydration ? hydration + ' %' : '97 %'}
           />
         </ScrollView>
         <NavTabBar />
