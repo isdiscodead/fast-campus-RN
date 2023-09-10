@@ -9,14 +9,14 @@ function AddButtons({}: Props) {
   return (
     <Container>
       <WhiteBox>
-        <TouchableOpacity>
+        <Button>
           <Text>심전도만 기록하기</Text>
-        </TouchableOpacity>
+        </Button>
       </WhiteBox>
       <WhiteBox>
-        <TouchableOpacity>
+        <Button>
           <Text>기록 취소하기</Text>
-        </TouchableOpacity>
+        </Button>
       </WhiteBox>
     </Container>
   );
@@ -26,6 +26,10 @@ const Container = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
+`;
+
+const Button = styled.TouchableOpacity`
+  padding: 5px 20px;
 `;
 
 export default AddButtons;

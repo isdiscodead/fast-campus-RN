@@ -7,10 +7,12 @@ import { RouteProp, useNavigation } from '@react-navigation/native';
 
 import { MainScreen } from '../screens/MainScreen';
 import { AddUpdateScreen } from '../screens/AddUpdateScreen';
+import { HealingScreen } from '../screens/HealingScreen';
 
 type ScreenParams = {
   Main: undefined;
   Update: undefined;
+  Healing: undefined;
 };
 
 const Stack = createNativeStackNavigator<ScreenParams>();
@@ -21,6 +23,7 @@ export const RootNavigation = () => {
       screenOptions={{ headerShown: false, presentation: 'containedModal' }}>
       <Stack.Screen name="Main" component={MainScreen} />
       <Stack.Screen name="Update" component={AddUpdateScreen} />
+      <Stack.Screen name="Healing" component={HealingScreen} />
       {/* <Stack.Screen name="Detail" component={DetailScreen} /> */}
     </Stack.Navigator>
   );
