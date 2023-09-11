@@ -14,6 +14,18 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-handle-handleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-handle-handleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		F4ED12B92B2A95510021F643 /* chakra_4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12B12B2A95510021F643 /* chakra_4.mp4 */; };
+		F4ED12BB2B2A95510021F643 /* chakra_6.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12B32B2A95510021F643 /* chakra_6.mp4 */; };
+		F4ED12BC2B2A95510021F643 /* chakra_5.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12B42B2A95510021F643 /* chakra_5.mp4 */; };
+		F4ED12BD2B2A95510021F643 /* chakra_7.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12B52B2A95510021F643 /* chakra_7.mp4 */; };
+		F4ED12BE2B2A95510021F643 /* chakra_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12B62B2A95510021F643 /* chakra_3.mp4 */; };
+		F4ED12BF2B2A95510021F643 /* chakra_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12B72B2A95510021F643 /* chakra_2.mp4 */; };
+		F4ED12C02B2A95510021F643 /* chakra_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12B82B2A95510021F643 /* chakra_1.mp4 */; };
+		F4ED12C62B2AA2740021F643 /* mantra4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12C12B2AA2740021F643 /* mantra4.mp4 */; };
+		F4ED12C72B2AA2740021F643 /* mantra5.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12C22B2AA2740021F643 /* mantra5.mp4 */; };
+		F4ED12C82B2AA2740021F643 /* mantra1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12C32B2AA2740021F643 /* mantra1.mp4 */; };
+		F4ED12C92B2AA2740021F643 /* mantra3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12C42B2AA2740021F643 /* mantra3.mp4 */; };
+		F4ED12CA2B2AA2740021F643 /* mantra2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F4ED12C52B2AA2740021F643 /* mantra2.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +57,18 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-handle-handleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-handle-handleTests.release.xcconfig"; path = "Target Support Files/Pods-handle-handleTests/Pods-handle-handleTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F455D3342B13160C00FFB56B /* handle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = handle.entitlements; path = handle/handle.entitlements; sourceTree = "<group>"; };
+		F4ED12B12B2A95510021F643 /* chakra_4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = chakra_4.mp4; path = ../../../../Downloads/chakra_4.mp4; sourceTree = "<group>"; };
+		F4ED12B32B2A95510021F643 /* chakra_6.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = chakra_6.mp4; path = ../../../../Downloads/chakra_6.mp4; sourceTree = "<group>"; };
+		F4ED12B42B2A95510021F643 /* chakra_5.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = chakra_5.mp4; path = ../../../../Downloads/chakra_5.mp4; sourceTree = "<group>"; };
+		F4ED12B52B2A95510021F643 /* chakra_7.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = chakra_7.mp4; path = ../../../../Downloads/chakra_7.mp4; sourceTree = "<group>"; };
+		F4ED12B62B2A95510021F643 /* chakra_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = chakra_3.mp4; path = ../../../../Downloads/chakra_3.mp4; sourceTree = "<group>"; };
+		F4ED12B72B2A95510021F643 /* chakra_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = chakra_2.mp4; path = ../../../../Downloads/chakra_2.mp4; sourceTree = "<group>"; };
+		F4ED12B82B2A95510021F643 /* chakra_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = chakra_1.mp4; path = ../../../../Downloads/chakra_1.mp4; sourceTree = "<group>"; };
+		F4ED12C12B2AA2740021F643 /* mantra4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = mantra4.mp4; path = ../../../../Downloads/mantra4.mp4; sourceTree = "<group>"; };
+		F4ED12C22B2AA2740021F643 /* mantra5.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = mantra5.mp4; path = ../../../../Downloads/mantra5.mp4; sourceTree = "<group>"; };
+		F4ED12C32B2AA2740021F643 /* mantra1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = mantra1.mp4; path = ../../../../Downloads/mantra1.mp4; sourceTree = "<group>"; };
+		F4ED12C42B2AA2740021F643 /* mantra3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = mantra3.mp4; path = ../../../../Downloads/mantra3.mp4; sourceTree = "<group>"; };
+		F4ED12C52B2AA2740021F643 /* mantra2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = mantra2.mp4; path = ../../../../Downloads/mantra2.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +142,18 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F4ED12C32B2AA2740021F643 /* mantra1.mp4 */,
+				F4ED12C52B2AA2740021F643 /* mantra2.mp4 */,
+				F4ED12C42B2AA2740021F643 /* mantra3.mp4 */,
+				F4ED12C12B2AA2740021F643 /* mantra4.mp4 */,
+				F4ED12C22B2AA2740021F643 /* mantra5.mp4 */,
+				F4ED12B82B2A95510021F643 /* chakra_1.mp4 */,
+				F4ED12B72B2A95510021F643 /* chakra_2.mp4 */,
+				F4ED12B62B2A95510021F643 /* chakra_3.mp4 */,
+				F4ED12B12B2A95510021F643 /* chakra_4.mp4 */,
+				F4ED12B42B2A95510021F643 /* chakra_5.mp4 */,
+				F4ED12B32B2A95510021F643 /* chakra_6.mp4 */,
+				F4ED12B52B2A95510021F643 /* chakra_7.mp4 */,
 				13B07FAE1A68108700A75B9A /* handle */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* handleTests */,
@@ -244,8 +280,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4ED12C92B2AA2740021F643 /* mantra3.mp4 in Resources */,
+				F4ED12B92B2A95510021F643 /* chakra_4.mp4 in Resources */,
+				F4ED12CA2B2AA2740021F643 /* mantra2.mp4 in Resources */,
+				F4ED12C72B2AA2740021F643 /* mantra5.mp4 in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				F4ED12C02B2A95510021F643 /* chakra_1.mp4 in Resources */,
+				F4ED12BF2B2A95510021F643 /* chakra_2.mp4 in Resources */,
+				F4ED12BC2B2A95510021F643 /* chakra_5.mp4 in Resources */,
+				F4ED12C62B2AA2740021F643 /* mantra4.mp4 in Resources */,
+				F4ED12BB2B2A95510021F643 /* chakra_6.mp4 in Resources */,
+				F4ED12BD2B2A95510021F643 /* chakra_7.mp4 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				F4ED12C82B2AA2740021F643 /* mantra1.mp4 in Resources */,
+				F4ED12BE2B2A95510021F643 /* chakra_3.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -193,7 +193,6 @@ export const MainScreen: React.FC = () => {
         <View
           style={{
             padding: 30,
-            marginBottom: 10,
           }}>
           <View
             style={{
@@ -203,7 +202,6 @@ export const MainScreen: React.FC = () => {
 
             <Text>👀 생체 시계와 건강 정보를 토대로 추천되는 활동입니다.</Text>
           </View>
-
           <RecommendAct />
         </View>
 
@@ -216,12 +214,28 @@ export const MainScreen: React.FC = () => {
               borderRadius: 10,
               height: 60,
               margin: 20,
+              marginBottom: 0,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}
             onPress={() => navigation.navigate('Update')}>
-            <Typography fontSize={22}>✏️ 마음 챙김 기록하기 </Typography>
+            <Typography fontSize={22}>✏️ 스트레스 기록하기 </Typography>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#ffffff40',
+              borderBottomColor: '#fff',
+              borderBottomWidth: 1,
+              borderRadius: 10,
+              height: 60,
+              margin: 20,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={() => navigation.navigate('Healing')}>
+            <Typography fontSize={22}>☕️ 마음 챙김 시작하기 </Typography>
           </TouchableOpacity>
         </View>
         <Text
