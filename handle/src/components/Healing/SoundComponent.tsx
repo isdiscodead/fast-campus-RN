@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Sound from 'react-native-sound';
 import { Typography } from '../Typography';
-import { Icon } from '../Icons';
-import { View } from 'react-native';
 import styled from 'styled-components/native';
+import { View } from 'react-native';
+import { Icon } from '../Icons';
 
 type Props = {
   path: string;

@@ -26,13 +26,11 @@ export const AddUpdateScreen: React.FC = () => {
 
       AppleHealthKit.initHealthKit(permissions, (error: string) => {
         /* Called after we receive a response from the system */
-
         if (error) {
           console.log('[ERROR] Cannot grant permissions!');
         }
 
         /* Can now read or write to HealthKit */
-
         const healthKitOptions = {
           startDate: dayjs().subtract(1, 'day').toISOString(),
         };
@@ -43,6 +41,8 @@ export const AddUpdateScreen: React.FC = () => {
             /* Samples are now collected from HealthKit */
             console.log('ECG', results[results.length - 1]); // [[시간, 값]] 형태 ...
             setECG(results[results.length - 1]);
+
+            // TODO: 이거 계산 안 돼있네...
           },
         );
       });

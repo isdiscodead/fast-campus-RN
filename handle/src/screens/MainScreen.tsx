@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 import { Header } from '../components/Header/Header';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import GoogleFit, { Scopes } from 'react-native-google-fit';
 import { MainCard } from '../components/Main/MainCard';
 import { Typography } from '../components/Typography';
 import { useRootNavigation } from '../navigations/RootNavigation';
@@ -13,6 +12,9 @@ import { Background } from '../components/Background';
 import NavTabBar from '../components/Navigation/NavTabBar';
 import dayjs from 'dayjs';
 import RecommendAct from '../components/Main/RecommendAct';
+
+import GoogleFit, { Scopes } from 'react-native-google-fit';
+
 import AppleHealthKit, {
   HealthKitPermissions,
   ElectrocardiogramSampleValue,
